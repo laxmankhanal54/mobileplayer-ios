@@ -18,3 +18,14 @@ public let MobilePlayerErrorUserInfoKey = "error"
 
 /// Posted when a MobilePlayerViewController changes state. There is no userInfo dictionary.
 public let MobilePlayerStateDidChangeNotification = "MobilePlayerStateDidChange"
+
+/// Posted when a MobilePlayerViewController gets command to play video. There is no userInfo dictionary.
+public let MobilePlayerDidPlayNotification = "MobilePlayerDidPlayNotification"
+
+/// Posted when a MobilePlayerViewController gets command to pause video. There is no userInfo dictionary.
+public let MobilePlayerDidPauseNotification = "MobilePlayerDidPauseNotification"
+
+/// Posted when a MobilePlayerViewController ends playing a video. There is no userInfo dictionary.
+public let MobilePlayerDidEndPlayingNotification = "MobilePlayerDidEndPlayingNotification"
+
+
