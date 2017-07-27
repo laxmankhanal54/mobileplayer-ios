@@ -327,7 +327,7 @@ open class MobilePlayerViewController: MPMoviePlayerViewController {
   /// Ends playback of current content.
   public func stop() {
     moviePlayer.stop()
-    NotificationCenter.default.post(name: NSNotification.Name(rawValue: MobilePlayerDidEndPlayingNotification), object: self, userInfo: [MobilePlayerEndUserInfoKey: moviePlayer.currentPlaybackTime])
+    NotificationCenter.default.post(name: NSNotification.Name(rawValue: MobilePlayerDidQuitPlayerNotification), object: self, userInfo: [MobilePlayerQuitPlayerUserInfoKey: moviePlayer.currentPlaybackTime])
   }
 
   // MARK: Video Rendering
@@ -515,6 +515,11 @@ open class MobilePlayerViewController: MPMoviePlayerViewController {
   }
 
   private func updatePlaybackInterface() {
+    guard (moviePlayer.currentPlaybackTime <= moviePlayer.duration) else {
+      NotificationCenter.default.post(name: NSNotification.Name(rawValue: MobilePlayerDidCompletePlayingNotification), object: self, userInfo: [MobilePlayerCompletePlayingUserInfoKey: moviePlayer.currentPlaybackTime])
+      return
+    }
+    
     if let playbackSlider = getViewForElementWithIdentifier("playback") as? Slider {
       playbackSlider.maximumValue = Float(moviePlayer.duration.isNormal ? moviePlayer.duration : 0)
       if !seeking {
@@ -526,14 +531,17 @@ open class MobilePlayerViewController: MPMoviePlayerViewController {
         availableValue: availableValue,
         animatedForDuration: MobilePlayerViewController.playbackInterfaceUpdateInterval)
     }
+    
     if let currentTimeLabel = getViewForElementWithIdentifier("currentTime") as? Label {
       currentTimeLabel.text = textForPlaybackTime(time: moviePlayer.currentPlaybackTime)
       currentTimeLabel.superview?.setNeedsLayout()
     }
+    
     if let remainingTimeLabel = getViewForElementWithIdentifier("remainingTime") as? Label {
       remainingTimeLabel.text = "-\(textForPlaybackTime(time: moviePlayer.duration - moviePlayer.currentPlaybackTime))"
       remainingTimeLabel.superview?.setNeedsLayout()
     }
+    
     if let durationLabel = getViewForElementWithIdentifier("duration") as? Label {
       durationLabel.text = textForPlaybackTime(time: moviePlayer.duration)
       durationLabel.superview?.setNeedsLayout()

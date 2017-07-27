@@ -31,10 +31,16 @@ public let MobilePlayerDidPauseNotification = "MobilePlayerDidPauseNotification"
 /// The value of this key is information about video player whenever a video is paused.
 public let MobilePlayerPauseUserInfoKey = "pause"
 
-/// Posted when a MobilePlayerViewController ends playing a video. There is no userInfo dictionary.
-public let MobilePlayerDidEndPlayingNotification = "MobilePlayerDidEndPlayingNotification"
+/// Posted when a MobilePlayerViewController completes playing a video. There is no userInfo dictionary.
+public let MobilePlayerDidCompletePlayingNotification = "MobilePlayerDidCompletePlayingNotification"
 
-/// The value of this key is information about video player whenever a video ends playing.
-public let MobilePlayerEndUserInfoKey = "endPlaying"
+/// The value of this key is information about video player when a video completes playing.
+public let MobilePlayerCompletePlayingUserInfoKey = "completePlaying"
+
+/// Posted when a user quits or closes video player. There is no userInfo dictionary.
+public let MobilePlayerDidQuitPlayerNotification = "MobilePlayerDidQuitPlayerNotification"
+
+/// The value of this key is information about video player Posted when a user quits or closes video player.
+public let MobilePlayerQuitPlayerUserInfoKey = "quitPlaying"
 
 
