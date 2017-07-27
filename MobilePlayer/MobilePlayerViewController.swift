@@ -313,7 +313,7 @@ open class MobilePlayerViewController: MPMoviePlayerViewController {
   /// and postrollViewController.
   public func play() {
     moviePlayer.play()
-    NotificationCenter.default.post(name: NSNotification.Name(rawValue: MobilePlayerDidPlayNotification), object: self)
+    NotificationCenter.default.post(name: NSNotification.Name(rawValue: MobilePlayerDidPlayNotification), object: self, userInfo: [MobilePlayerPlayUserInfoKey: moviePlayer.currentPlaybackTime])
   }
 
   /// Pauses playback of current content.
@@ -321,13 +321,13 @@ open class MobilePlayerViewController: MPMoviePlayerViewController {
   /// Pausing playback causes pauseOverlayViewController to be shown.
   public func pause() {
     moviePlayer.pause()
-    NotificationCenter.default.post(name: NSNotification.Name(rawValue: MobilePlayerDidPauseNotification), object: self)
+    NotificationCenter.default.post(name: NSNotification.Name(rawValue: MobilePlayerDidPauseNotification), object: self, userInfo: [MobilePlayerPauseUserInfoKey: moviePlayer.currentPlaybackTime])
   }
 
   /// Ends playback of current content.
   public func stop() {
     moviePlayer.stop()
-    NotificationCenter.default.post(name: NSNotification.Name(rawValue: MobilePlayerDidEndPlayingNotification), object: self)
+    NotificationCenter.default.post(name: NSNotification.Name(rawValue: MobilePlayerDidEndPlayingNotification), object: self, userInfo: [MobilePlayerEndUserInfoKey: moviePlayer.currentPlaybackTime])
   }
 
   // MARK: Video Rendering
