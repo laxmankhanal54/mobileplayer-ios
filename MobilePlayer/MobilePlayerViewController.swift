@@ -515,11 +515,6 @@ open class MobilePlayerViewController: MPMoviePlayerViewController {
   }
 
   private func updatePlaybackInterface() {
-    guard (moviePlayer.currentPlaybackTime <= moviePlayer.duration) else {
-      NotificationCenter.default.post(name: NSNotification.Name(rawValue: MobilePlayerDidCompletePlayingNotification), object: self, userInfo: [MobilePlayerCompletePlayingUserInfoKey: moviePlayer.currentPlaybackTime])
-      return
-    }
-    
     if let playbackSlider = getViewForElementWithIdentifier("playback") as? Slider {
       playbackSlider.maximumValue = Float(moviePlayer.duration.isNormal ? moviePlayer.duration : 0)
       if !seeking {
@@ -547,6 +542,10 @@ open class MobilePlayerViewController: MPMoviePlayerViewController {
       durationLabel.superview?.setNeedsLayout()
     }
     updateShownTimedOverlays()
+    
+    if (moviePlayer.currentPlaybackTime >= moviePlayer.duration) {
+      NotificationCenter.default.post(name: NSNotification.Name(rawValue: MobilePlayerDidCompletePlayingNotification), object: self, userInfo: [MobilePlayerCompletePlayingUserInfoKey: moviePlayer.currentPlaybackTime])
+    }
   }
 
   private func textForPlaybackTime(time: TimeInterval) -> String {
