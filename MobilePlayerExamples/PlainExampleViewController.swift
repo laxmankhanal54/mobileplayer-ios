@@ -1,3 +1,4 @@
+
 //
 //  PlainExampleViewController.swift
 //  MobilePlayer
@@ -20,7 +21,21 @@ class PlainExampleViewController: ExampleViewController {
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-
+  
+//  
+//  override func viewDidLoad() {
+//    super.viewDidLoad()
+//    
+//    NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: MobilePlayerDidQuitNotification), object: nil, queue: nil) { (notification) in
+//      self.abc(notification: notification)
+//    }
+//  }
+//
+//  func abc(notification: Notification) {
+//  
+//  
+//  }
+//  
   override func showButtonDidGetTapped() {
     let playerVC = MobilePlayerViewController(contentURL: videoURL)
     playerVC.title = "Vanilla Player - \(videoTitle)"

@@ -18,3 +18,29 @@ public let MobilePlayerErrorUserInfoKey = "error"
 
 /// Posted when a MobilePlayerViewController changes state. There is no userInfo dictionary.
 public let MobilePlayerStateDidChangeNotification = "MobilePlayerStateDidChange"
+
+/// Posted when a MobilePlayerViewController gets command to play video. Userinfo dictionary have current value for currentPlaybackTime.
+public let MobilePlayerDidPlayNotification = "MobilePlayerDidPlayNotification"
+
+/// The value of this key is information about video player whenever a video is played.
+public let MobilePlayerPlayUserInfoKey = "play"
+
+/// Posted when a MobilePlayerViewController gets command to pause video. Userinfo dictionary have current value for currentPlaybackTime.
+public let MobilePlayerDidPauseNotification = "MobilePlayerDidPauseNotification"
+
+/// The value of this key is information about video player whenever a video is paused.
+public let MobilePlayerPauseUserInfoKey = "pause"
+
+/// Posted when a MobilePlayerViewController completes playing a video. Userinfo dictionary have current value for currentPlaybackTime.
+public let MobilePlayerDidCompletePlayingNotification = "MobilePlayerDidCompletePlayingNotification"
+
+/// The value of this key is information about video player when a video completes playing.
+public let MobilePlayerCompletePlayingUserInfoKey = "completePlaying"
+
+/// Posted when a user quits or closes video player. Userinfo dictionary have current value for currentPlaybackTime.
+public let MobilePlayerDidQuitNotification = "MobilePlayerDidQuitNotification"
+
+/// The value of this key is information about video player Posted when a user quits or closes video player.
+public let MobilePlayerQuitUserInfoKey = "quitPlaying"
+
+

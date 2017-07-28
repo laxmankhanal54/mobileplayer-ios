@@ -312,6 +312,10 @@ open class MobilePlayerViewController: MPMoviePlayerViewController {
   /// Starting playback causes dismiss to be called on prerollViewController, pauseOverlayViewController
   /// and postrollViewController.
   public func play() {
+    if !seeking {
+      NotificationCenter.default.post(name: NSNotification.Name(rawValue: MobilePlayerDidPlayNotification), object: self, userInfo: [MobilePlayerPlayUserInfoKey: moviePlayer.currentPlaybackTime])
+    }
+    
     moviePlayer.play()
   }
 
@@ -319,11 +323,16 @@ open class MobilePlayerViewController: MPMoviePlayerViewController {
   ///
   /// Pausing playback causes pauseOverlayViewController to be shown.
   public func pause() {
+    if !seeking {
+      NotificationCenter.default.post(name: NSNotification.Name(rawValue: MobilePlayerDidPauseNotification), object: self, userInfo: [MobilePlayerPauseUserInfoKey: moviePlayer.currentPlaybackTime])
+    }
+    
     moviePlayer.pause()
   }
 
   /// Ends playback of current content.
   public func stop() {
+    NotificationCenter.default.post(name: NSNotification.Name(rawValue: MobilePlayerDidQuitNotification), object: self, userInfo: [MobilePlayerQuitUserInfoKey: Float(moviePlayer.currentPlaybackTime)])
     moviePlayer.stop()
   }
 
@@ -523,19 +532,26 @@ open class MobilePlayerViewController: MPMoviePlayerViewController {
         availableValue: availableValue,
         animatedForDuration: MobilePlayerViewController.playbackInterfaceUpdateInterval)
     }
+    
     if let currentTimeLabel = getViewForElementWithIdentifier("currentTime") as? Label {
       currentTimeLabel.text = textForPlaybackTime(time: moviePlayer.currentPlaybackTime)
       currentTimeLabel.superview?.setNeedsLayout()
     }
+    
     if let remainingTimeLabel = getViewForElementWithIdentifier("remainingTime") as? Label {
       remainingTimeLabel.text = "-\(textForPlaybackTime(time: moviePlayer.duration - moviePlayer.currentPlaybackTime))"
       remainingTimeLabel.superview?.setNeedsLayout()
     }
+    
     if let durationLabel = getViewForElementWithIdentifier("duration") as? Label {
       durationLabel.text = textForPlaybackTime(time: moviePlayer.duration)
       durationLabel.superview?.setNeedsLayout()
     }
     updateShownTimedOverlays()
+    
+    if (moviePlayer.currentPlaybackTime >= moviePlayer.duration) {
+      NotificationCenter.default.post(name: NSNotification.Name(rawValue: MobilePlayerDidCompletePlayingNotification), object: self, userInfo: [MobilePlayerCompletePlayingUserInfoKey: moviePlayer.currentPlaybackTime])
+    }
   }
 
   private func textForPlaybackTime(time: TimeInterval) -> String {
