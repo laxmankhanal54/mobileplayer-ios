@@ -70,8 +70,8 @@ public class SliderConfig: ElementConfig {
     // Values need to be AnyObject for type conversions to work correctly.
     let dictionary = dictionary as [String: AnyObject]
     
-    trackHeight = (dictionary["trackHeight"] as? CGFloat) ?? 6
-    trackCornerRadius = (dictionary["trackCornerRadius"] as? CGFloat) ?? 3
+    trackHeight = (dictionary["trackHeight"] as? CGFloat) ?? Constants.trackHeight//6
+    trackCornerRadius = (dictionary["trackCornerRadius"] as? CGFloat) ?? Constants.trackCornerRadius//3
 
     if let minimumTrackTintColorHex = dictionary["minimumTrackTintColor"] as? String {
       minimumTrackTintColor = UIColor(hex: minimumTrackTintColorHex)
@@ -97,9 +97,9 @@ public class SliderConfig: ElementConfig {
       thumbTintColor = UIColor.white
     }
 
-    thumbWidth = (dictionary["thumbWidth"] as? CGFloat) ?? 16
-    thumbHeight = (dictionary["thumbHeight"] as? CGFloat) ?? 16
-    thumbCornerRadius = (dictionary["thumbCornerRadius"] as? CGFloat) ?? 8
+    thumbWidth = (dictionary["thumbWidth"] as? CGFloat) ?? Constants.thumbWidth//16
+    thumbHeight = (dictionary["thumbHeight"] as? CGFloat) ?? Constants.thumbHeight//16
+    thumbCornerRadius = (dictionary["thumbCornerRadius"] as? CGFloat) ?? Constants.thumbCornerRadius//8
     thumbBorderWidth = (dictionary["thumbBorderWidth"] as? CGFloat) ?? 0
 
     if let thumbBorderColorHex = dictionary["thumbBorderColor"] as? String {
@@ -111,3 +111,5 @@ public class SliderConfig: ElementConfig {
     super.init(dictionary: dictionary)
   }
 }
+
+

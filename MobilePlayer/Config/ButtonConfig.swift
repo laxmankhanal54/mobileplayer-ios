@@ -37,7 +37,7 @@ public class ButtonConfig: ElementConfig {
     // Values need to be AnyObject for type conversions to work correctly.
     let dictionary = dictionary as [String: AnyObject]
     
-    height = (dictionary["height"] as? CGFloat) ?? 40
+    height = (dictionary["height"] as? CGFloat) ?? Constants.buttonHeight//40
 
     if let imageName = dictionary["image"] as? String {
       image = UIImage(named: imageName)
@@ -47,6 +47,8 @@ public class ButtonConfig: ElementConfig {
         image = UIImage(podResourceNamed: "MLCloseButton.png")?.template
       case "action":
         image = UIImage(podResourceNamed: "MLShareButton")?.template
+        case "rewind":
+        image = UIImage(podResourceNamed: "rewind10.png")?.template
       default:
         image = nil
       }

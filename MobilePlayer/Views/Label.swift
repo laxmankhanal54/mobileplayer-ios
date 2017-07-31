@@ -19,7 +19,7 @@ class Label: UILabel {
     font = config.font
     textColor = config.textColor
   }
-
+  
   required init?(coder aDecoder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }

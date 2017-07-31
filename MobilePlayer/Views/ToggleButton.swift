@@ -17,6 +17,7 @@ class ToggleButton: UIButton {
     super.init(frame: .zero)
     accessibilityLabel = accessibilityLabel ?? config.identifier
     tintColor = config.tintColor
+//    backgroundColor = UIColor.green
     setImage(config.image, for: .normal)
   }
 
@@ -37,7 +38,7 @@ class ToggleButton: UIButton {
   override func sizeThatFits(_ size: CGSize) -> CGSize {
     let superSize = super.sizeThatFits(size)
     return CGSize(
-      width: (config.widthCalculation == .AsDefined) ? config.width : superSize.width,
+      width: (config.widthCalculation == .AsDefined) ? config.width : superSize.width - marginLeft - marginRight,
       height: config.height)
   }
 }

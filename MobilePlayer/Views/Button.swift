@@ -16,6 +16,8 @@ class Button: UIButton {
     super.init(frame: .zero)
     accessibilityLabel = accessibilityLabel ?? config.identifier
     tintColor = config.tintColor
+//    backgroundColor = UIColor.red
+    imageView?.contentMode = .scaleAspectFit
     setImage(config.image, for: .normal)
   }
 
@@ -26,9 +28,10 @@ class Button: UIButton {
   override func sizeThatFits(_ size: CGSize) -> CGSize {
     let superSize = super.sizeThatFits(size)
     return CGSize(
-      width: (config.widthCalculation == .AsDefined) ? config.width : superSize.width,
+      width: (config.widthCalculation == .AsDefined) ? config.width : superSize.width - marginLeft - marginRight,
       height: config.height)
   }
+  
 }
 
 // MARK: - Element
