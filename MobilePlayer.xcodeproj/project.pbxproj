@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1568CBC81F2F6A2300BFF671 /* LabelPadding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1568CBC71F2F6A2300BFF671 /* LabelPadding.swift */; };
+		1568CBCA1F2F703800BFF671 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1568CBC91F2F703800BFF671 /* Constants.swift */; };
+		1568CBD11F2F758900BFF671 /* rewind10.png in Resources */ = {isa = PBXBuildFile; fileRef = 1568CBCD1F2F758900BFF671 /* rewind10.png */; };
+		1568CBD21F2F758900BFF671 /* rewind10@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1568CBCE1F2F758900BFF671 /* rewind10@2x.png */; };
+		1568CBD31F2F758900BFF671 /* rewind10@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 1568CBCF1F2F758900BFF671 /* rewind10@3x.png */; };
 		5F31B7B91BBAE39900EF50C4 /* MobilePlayerNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F31B7B81BBAE39900EF50C4 /* MobilePlayerNotification.swift */; };
 		5F3F03C31C18E73200EF50C4 /* PrerollExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3F03C21C18E73200EF50C4 /* PrerollExampleViewController.swift */; };
 		5F3F03C51C18E74000EF50C4 /* PauseOverlayExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5F3F03C41C18E74000EF50C4 /* PauseOverlayExampleViewController.swift */; };
@@ -137,6 +142,11 @@
 
 /* Begin PBXFileReference section */
 		0A3D625F8D46F7B3823A9927 /* Pods-MobilePlayerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobilePlayerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MobilePlayerTests/Pods-MobilePlayerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1568CBC71F2F6A2300BFF671 /* LabelPadding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelPadding.swift; sourceTree = "<group>"; };
+		1568CBC91F2F703800BFF671 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		1568CBCD1F2F758900BFF671 /* rewind10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rewind10.png; sourceTree = "<group>"; };
+		1568CBCE1F2F758900BFF671 /* rewind10@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rewind10@2x.png"; sourceTree = "<group>"; };
+		1568CBCF1F2F758900BFF671 /* rewind10@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rewind10@3x.png"; sourceTree = "<group>"; };
 		460022C3A2D4FC80A1D57D18 /* Pods-MobilePlayerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MobilePlayerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-MobilePlayerTests/Pods-MobilePlayerTests.release.xcconfig"; sourceTree = "<group>"; };
 		505CCD80FF878F8F17EC4627 /* Pods_MobilePlayerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MobilePlayerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5F31B7B81BBAE39900EF50C4 /* MobilePlayerNotification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MobilePlayerNotification.swift; sourceTree = "<group>"; };
@@ -276,6 +286,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1568CBCB1F2F758900BFF671 /* rewind10.imageset */ = {
+			isa = PBXGroup;
+			children = (
+				1568CBCD1F2F758900BFF671 /* rewind10.png */,
+				1568CBCE1F2F758900BFF671 /* rewind10@2x.png */,
+				1568CBCF1F2F758900BFF671 /* rewind10@3x.png */,
+			);
+			name = rewind10.imageset;
+			path = refresh10.imageset;
+			sourceTree = "<group>";
+		};
 		5F01D5191C041EF400EF50C4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,6 +383,7 @@
 				5FA92EA21BA9896300EF50C4 /* ToggleButton.swift */,
 				5FA92EA61BA9919D00EF50C4 /* Slider.swift */,
 				5F7CDF4A1BBEB6F900EF50C4 /* VolumeView.swift */,
+				1568CBC71F2F6A2300BFF671 /* LabelPadding.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -377,6 +399,7 @@
 		5F8272751BFAC3BD00EF50C4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				1568CBCB1F2F758900BFF671 /* rewind10.imageset */,
 				5F8272761BFAC3BD00EF50C4 /* MLCloseButton.png */,
 				5F8272771BFAC3BD00EF50C4 /* MLCloseButton@2x.png */,
 				5F8272781BFAC3BD00EF50C4 /* MLCloseButton@3x.png */,
@@ -477,6 +500,7 @@
 				C3A4069C1B278A4900D1833D /* Extensions */,
 				5F8272751BFAC3BD00EF50C4 /* Resources */,
 				CE554D521AFE6CCD00DAC7E9 /* Supporting Files */,
+				1568CBC91F2F703800BFF671 /* Constants.swift */,
 			);
 			path = MobilePlayer;
 			sourceTree = "<group>";
@@ -745,9 +769,12 @@
 				5F8272961BFAC3BD00EF50C4 /* MLPlayButton@3x.png in Resources */,
 				5F82728F1BFAC3BD00EF50C4 /* MLIncreaseVolume@2x.png in Resources */,
 				5F8272991BFAC3BD00EF50C4 /* MLReduceVolume@3x.png in Resources */,
+				1568CBD11F2F758900BFF671 /* rewind10.png in Resources */,
+				1568CBD31F2F758900BFF671 /* rewind10@3x.png in Resources */,
 				5F8272981BFAC3BD00EF50C4 /* MLReduceVolume@2x.png in Resources */,
 				5F8272921BFAC3BD00EF50C4 /* MLPauseButton@2x.png in Resources */,
 				5F82728E1BFAC3BD00EF50C4 /* MLIncreaseVolume.png in Resources */,
+				1568CBD21F2F758900BFF671 /* rewind10@2x.png in Resources */,
 				5F8272901BFAC3BD00EF50C4 /* MLIncreaseVolume@3x.png in Resources */,
 				5F82729D1BFAC3BD00EF50C4 /* MLVolumeButton.png in Resources */,
 				5F82729A1BFAC3BD00EF50C4 /* MLShareButton.png in Resources */,
@@ -819,6 +846,7 @@
 				5FBFEA361BA8AD0200EF50C4 /* SliderConfig.swift in Sources */,
 				5FBFEA2E1BA8AC1B00EF50C4 /* BarConfig.swift in Sources */,
 				C308B3C01B150F7600CB1515 /* MobilePlayerConfig.swift in Sources */,
+				1568CBC81F2F6A2300BFF671 /* LabelPadding.swift in Sources */,
 				5F8272741BFA9F0600EF50C4 /* UIImage+CocoaPods.swift in Sources */,
 				5F7CDF471BBEB6C400EF50C4 /* YoutubeParser.swift in Sources */,
 				5FD756961BAC4AE700EF50C4 /* WatermarkViewController.swift in Sources */,
@@ -840,6 +868,7 @@
 				5F7CDF4D1BBEB70A00EF50C4 /* MobilePlayerControlsView.swift in Sources */,
 				5F7CDF4B1BBEB6F900EF50C4 /* VolumeView.swift in Sources */,
 				5F749C261BAB2C8900EF50C4 /* Element.swift in Sources */,
+				1568CBCA1F2F703800BFF671 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -209,6 +209,18 @@ open class MobilePlayerViewController: MPMoviePlayerViewController {
         },
         forControlEvents: .touchUpInside)
     }
+    
+    if let rewindButton = getViewForElementWithIdentifier("rewind") as? Button {
+      rewindButton.addCallback(
+        callback: { [weak self] in
+          guard let slf = self else {
+            return
+          }
+          slf.moviePlayer.currentPlaybackTime = slf.moviePlayer.currentPlaybackTime - 10.0
+//          slf.moviePlayer.currentPlaybackTime = moviePlayer.currentPlaybackTime - 10.0
+        },
+        forControlEvents: .touchUpInside)
+    }
 
     (getViewForElementWithIdentifier("play") as? ToggleButton)?.addCallback(
       callback: { [weak self] in

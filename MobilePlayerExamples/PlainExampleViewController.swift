@@ -89,7 +89,7 @@ class PlainExampleViewController: ExampleViewController {
 //    let playerVC = MobilePlayerViewController(contentURL: videoURL, config: mainConfig)
     let playerVC = MobilePlayerViewController(contentURL: videoURL)
     playerVC.title = "Vanilla Player - \(videoTitle)"
-    playerVC.activityItems = [videoURL]
+//    playerVC.activityItems = [videoURL]
 //    playerVC.initialPlaybackDuration = 60.0
     presentMoviePlayerViewControllerAnimated(playerVC)
   }
