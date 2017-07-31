@@ -70,8 +70,8 @@ public class SliderConfig: ElementConfig {
     // Values need to be AnyObject for type conversions to work correctly.
     let dictionary = dictionary as [String: AnyObject]
     
-    trackHeight = (dictionary["trackHeight"] as? CGFloat) ?? 6
-    trackCornerRadius = (dictionary["trackCornerRadius"] as? CGFloat) ?? 3
+    trackHeight = (dictionary["trackHeight"] as? CGFloat) ?? Constants.trackHeight//6
+    trackCornerRadius = (dictionary["trackCornerRadius"] as? CGFloat) ?? Constants.trackCornerRadius//3
 
     if let minimumTrackTintColorHex = dictionary["minimumTrackTintColor"] as? String {
       minimumTrackTintColor = UIColor(hex: minimumTrackTintColorHex)
@@ -97,9 +97,9 @@ public class SliderConfig: ElementConfig {
       thumbTintColor = UIColor.white
     }
 
-    thumbWidth = (dictionary["thumbWidth"] as? CGFloat) ?? 16
-    thumbHeight = (dictionary["thumbHeight"] as? CGFloat) ?? 16
-    thumbCornerRadius = (dictionary["thumbCornerRadius"] as? CGFloat) ?? 8
+    thumbWidth = (dictionary["thumbWidth"] as? CGFloat) ?? Constants.thumbWidth//16
+    thumbHeight = (dictionary["thumbHeight"] as? CGFloat) ?? Constants.thumbHeight//16
+    thumbCornerRadius = (dictionary["thumbCornerRadius"] as? CGFloat) ?? Constants.thumbCornerRadius//8
     thumbBorderWidth = (dictionary["thumbBorderWidth"] as? CGFloat) ?? 0
 
     if let thumbBorderColorHex = dictionary["thumbBorderColor"] as? String {
@@ -111,3 +111,36 @@ public class SliderConfig: ElementConfig {
     super.init(dictionary: dictionary)
   }
 }
+
+
+class Constants {
+  
+  //Slider constant
+  static let trackHeight: CGFloat = 12
+  static let trackCornerRadius: CGFloat = 6
+  static let trackTintColor: UIColor = UIColor.blue
+  static let thumbWidth: CGFloat = 24
+  static let thumbHeight: CGFloat = 24
+  static let thumbCornerRadius: CGFloat = thumbWidth / 2.0
+  
+  //Button constants
+  static let buttonHeight: CGFloat = 24
+  static let buttonWidth: CGFloat = 24
+  
+  //Bar constants
+  static let barHeight: CGFloat = 60
+  
+  
+  //Label constants
+  static let fontSize: CGFloat = 17
+  
+  
+  //TOggle button
+  static let toggleButtonHeight: CGFloat = 60
+  static let toggleButtonTintColor = UIColor.blue
+  
+  
+  
+}
+
+

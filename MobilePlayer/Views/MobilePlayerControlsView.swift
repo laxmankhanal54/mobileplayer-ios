@@ -45,9 +45,9 @@ final class MobilePlayerControlsView: UIView {
     addSubview(topBar)
     if bottomBar.elements.count == 0 {
       bottomBar.addElement(usingConfig: ToggleButtonConfig(dictionary: ["type": "toggleButton", "identifier": "play"]))
-      bottomBar.addElement(usingConfig: LabelConfig(dictionary: ["type": "label", "identifier": "currentTime"]))
+      bottomBar.addElement(usingConfig: LabelConfig(dictionary: ["type": "label", "identifier": "currentTime", "marginLeft": 8, "marginRight": 8]))
       bottomBar.addElement(usingConfig: SliderConfig(dictionary: ["type": "slider", "identifier": "playback", "marginLeft": 8, "marginRight": 8]))
-      bottomBar.addElement(usingConfig: LabelConfig(dictionary: ["type": "label", "identifier": "duration", "marginRight": 8]))
+      bottomBar.addElement(usingConfig: LabelConfig(dictionary: ["type": "label", "identifier": "duration", "marginLeft": 80, "marginRight": 80]))
     }
     addSubview(bottomBar)
   }

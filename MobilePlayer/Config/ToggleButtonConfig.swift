@@ -47,7 +47,7 @@ public class ToggleButtonConfig: ElementConfig {
     
     let identifier = dictionary["identifier"] as? String
     
-    height = (dictionary["height"] as? CGFloat) ?? 40
+    height = (dictionary["height"] as? CGFloat) ?? Constants.toggleButtonHeight//40
     
     if let imageName = dictionary["image"] as? String {
       image = UIImage(named: imageName)

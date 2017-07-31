@@ -70,6 +70,13 @@ open class MobilePlayerViewController: MPMoviePlayerViewController {
   private var previousStatusBarHiddenValue: Bool?
   private var previousStatusBarStyle: UIStatusBarStyle!
   private var isFirstPlay = true
+  
+  //Flag to determine if video is loading for the first time.
+  fileprivate var isFirstLoad = true
+  
+  //Used to start a video from certain time duration for the first time.
+  public var initialPlaybackDuration: TimeInterval? = 0.0
+  
   fileprivate var seeking = false
   fileprivate var wasPlayingBeforeSeek = false
   private var playbackInterfaceUpdateTimer: Timer?
@@ -140,6 +147,17 @@ open class MobilePlayerViewController: MPMoviePlayerViewController {
         slf.handleMoviePlayerPlaybackStateDidChangeNotification()
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: MobilePlayerStateDidChangeNotification), object: slf)
     }
+    notificationCenter.addObserver(
+        forName: NSNotification.Name.MPMoviePlayerLoadStateDidChange,
+        object: moviePlayer,
+        queue: OperationQueue.main) { [weak self] notification in
+            guard let slf = self else {
+                return
+            }
+            slf.handleMoviePlayerLoadStateDidChangeNotification()
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: MobilePlayerStateDidChangeNotification), object: slf)
+    }
+
     notificationCenter.removeObserver(
       self,
       name: NSNotification.Name.MPMoviePlayerPlaybackDidFinish,
@@ -332,7 +350,7 @@ open class MobilePlayerViewController: MPMoviePlayerViewController {
 
   /// Ends playback of current content.
   public func stop() {
-    NotificationCenter.default.post(name: NSNotification.Name(rawValue: MobilePlayerDidQuitNotification), object: self, userInfo: [MobilePlayerQuitUserInfoKey: Float(moviePlayer.currentPlaybackTime)])
+    NotificationCenter.default.post(name: NSNotification.Name(rawValue: MobilePlayerDidQuitNotification), object: self, userInfo: [MobilePlayerQuitUserInfoKey: moviePlayer.currentPlaybackTime])
     moviePlayer.stop()
   }
 
@@ -578,11 +596,27 @@ open class MobilePlayerViewController: MPMoviePlayerViewController {
       },
       repeats: false)
   }
+    
+  private func handleMoviePlayerLoadStateDidChangeNotification() {
+    switch moviePlayer.loadState {
+    case MPMovieLoadState.playable:
+      if isFirstLoad {
+        isFirstLoad = !isFirstLoad
+        moviePlayer.currentPlaybackTime = initialPlaybackDuration!
+      }
+    case MPMovieLoadState.playthroughOK, MPMovieLoadState.stalled:
+      break
+    default:
+      break
+    }
+  }
 
   private func handleMoviePlayerPlaybackStateDidChangeNotification() {
     state = StateHelper.calculateStateUsing(previousState: previousState, andPlaybackState: moviePlayer.playbackState)
     let playButton = getViewForElementWithIdentifier("play") as? ToggleButton
-    if state == .playing {
+    
+    switch state {
+    case .playing:
       doFirstPlaySetupIfNeeded()
       playButton?.toggled = true
       if !controlsView.controlsHidden {
@@ -591,7 +625,7 @@ open class MobilePlayerViewController: MPMoviePlayerViewController {
       prerollViewController?.dismiss()
       pauseOverlayViewController?.dismiss()
       postrollViewController?.dismiss()
-    } else {
+    default:
       playButton?.toggled = false
       hideControlsTimer?.invalidate()
       controlsView.controlsHidden = false
@@ -599,6 +633,24 @@ open class MobilePlayerViewController: MPMoviePlayerViewController {
         showOverlayViewController(pauseOverlayViewController)
       }
     }
+    
+//    if state == .playing {
+//      doFirstPlaySetupIfNeeded()
+//      playButton?.toggled = true
+//      if !controlsView.controlsHidden {
+//        resetHideControlsTimer()
+//      }
+//      prerollViewController?.dismiss()
+//      pauseOverlayViewController?.dismiss()
+//      postrollViewController?.dismiss()
+//    } else {
+//      playButton?.toggled = false
+//      hideControlsTimer?.invalidate()
+//      controlsView.controlsHidden = false
+//      if let pauseOverlayViewController = pauseOverlayViewController, (state == .paused && !seeking) {
+//        showOverlayViewController(pauseOverlayViewController)
+//      }
+//    }
   }
 
   private func updateShownTimedOverlays() {

@@ -66,7 +66,7 @@ public class BarConfig {
       backgroundColor = [UIColor(white: 0, alpha: 0.7)]
     }
 
-    height = (dictionary["height"] as? CGFloat) ?? 40
+    height = (dictionary["height"] as? CGFloat) ?? Constants.barHeight//40
     topBorderHeight = (dictionary["topBorderHeight"] as? CGFloat) ?? 0
 
     if let topBorderColorHex = dictionary["topBorderColor"] as? String {

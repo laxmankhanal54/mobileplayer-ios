@@ -37,7 +37,7 @@ public class ButtonConfig: ElementConfig {
     // Values need to be AnyObject for type conversions to work correctly.
     let dictionary = dictionary as [String: AnyObject]
     
-    height = (dictionary["height"] as? CGFloat) ?? 40
+    height = (dictionary["height"] as? CGFloat) ?? Constants.buttonHeight//40
 
     if let imageName = dictionary["image"] as? String {
       image = UIImage(named: imageName)
